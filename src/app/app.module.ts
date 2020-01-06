@@ -6,12 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    TopBarComponent
+    TopBarComponent,
+    ProductAlertsComponent
   ],
 
   // 配置路由，根据不同的url，跳转不同的页面
