@@ -1,0 +1,8 @@
+<h2>Product Detail</h2>
+
+<!-- 下面这个外层div组件对页面没什么影响，不知道官方教程为什么加这个。。。 -->
+<div *ngIf="product">
+<h3>{{ product.name}}</h3>
+<h4>{{ product.price | currency }}</h4>
+<p>{{ product.description }}</p>
+</div>
