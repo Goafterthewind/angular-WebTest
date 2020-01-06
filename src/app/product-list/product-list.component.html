@@ -1,1 +1,17 @@
-<p>product-list works!</p>
+<h2>Products</h2>
+<div *ngFor="let product of products;index as productId">
+    <h3>
+        <!-- routerLink的属性值的第一个参数‘/products’前面的‘/’不写没什么影响 -->
+        <a [title]="product.name + ' details'" [routerLink]="['/products',productId]">
+            {{ product.name }}
+        </a>
+    </h3>
+
+    <p *ngIf="product.description">
+        Description: {{ product.description }}
+    </p>
+    
+    <button nz-button nzType="primary" (click)="share()">share</button>
+
+    <app-product-alerts [product]="product"  (notify)="onNotify()"></app-product-alerts>
+</div>
