@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,8 +13,11 @@ export class CartService {
 
   // 用来存储加入购物车的商品
   items = [];
+  data: any = [];
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   // 加入购物车
   addToCart(product) {
@@ -29,5 +33,13 @@ export class CartService {
   clearCart() {
     this.items = [];
     return this.items;
+  }
+
+  // 获取商品类型、价格
+  getShippingPrices() {
+     this.http.get('/assets/temps/shipping-data.json').subscribe(res => {
+       this.data = res;
+     });
+     return this.data;
   }
 }
