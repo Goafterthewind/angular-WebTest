@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { products } from '../products';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,9 @@ export class ProductDetailsComponent implements OnInit {
    * Use to traverse the `RouterState` tree and extract information from nodes.
    * (提供对与加载到出口中的组件关联的路由的信息的访问。用于遍历“RouterState”树并从节点提取信息。)
    */
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService) {}
 
   ngOnInit() {
     /**
@@ -28,6 +31,15 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.product = products[params.get('productId')];
     });
+  }
+
+  /**
+   * 这个AddToCart方法和服务中心的addToCart方法一毛钱关系也没有；
+   * 不知道为什么用两个同名的方法。。傻兮兮的。
+   */
+  AddToCart() {
+    window.alert('Your product has been added to the cart!');
+    this.cartService.addToCart(this.product);
   }
 
 }
