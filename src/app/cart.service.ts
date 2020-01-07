@@ -37,9 +37,6 @@ export class CartService {
 
   // 获取商品类型、价格
   getShippingPrices() {
-     this.http.get('/assets/temps/shipping-data.json').subscribe(res => {
-       this.data = res;
-     });
-     return this.data;
+     return this.http.get('/assets/temps/shipping-data.json');
   }
 }
